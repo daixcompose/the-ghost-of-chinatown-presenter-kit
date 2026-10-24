@@ -14,4 +14,13 @@
 
 **Preview:** open `index.html` in your browser (or run a local static server).
 
-**Publish:** upload changed files to the GitHub repo; GitHub Pages updates in a minute or two.
+**Publish to GitHub Pages:** from macOS **Terminal** (Cursor’s sandbox cannot complete GitHub login):
+
+```bash
+cd "/Users/daixuanai/Library/CloudStorage/Dropbox/DaixCompose/Website/The Ghosts of Chinatown/ghost-of-chinatown-site"
+./scripts/publish-to-github.sh
+```
+
+That script signs in with `gh`, creates `ghosts-of-chinatown-site`, pushes `main`, enables Pages, and adds `CNAME` for `ghost.daixcompose.com`. Point GoDaddy **CNAME** `ghost` → `YOUR_USERNAME.github.io`.
+
+**Later updates:** `git add -A && git commit -m "…" && git push`
