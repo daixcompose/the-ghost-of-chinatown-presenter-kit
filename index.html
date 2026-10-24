@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>body{margin:0}[hidden]{display:none!important}</style>
+<title>The Ghosts of Chinatown — Presenter Kit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap">
+<style>
+@font-face{font-family:"Migra";src:url(fonts/migra-extralight.woff2) format("woff2");font-weight:200;font-style:normal;font-display:swap}
+@font-face{font-family:"Migra";src:url(fonts/migra-extrabold.woff2) format("woff2");font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:"Migra";src:url(fonts/migraitalic-extrabolditalic.woff2) format("woff2");font-weight:800;font-style:italic;font-display:swap}
+/* ============ BRAND COLORS & FONTS — edit here ============ */
+/* Layout: daixcompose brand — Migra display, red + gold accent (#eda22c) */
+:root{
+  --bg:#fffafa; --sheet:#ffffff; --ink:#0d0101; --mute:#4e4e4e; --rule:#f0d9d9;
+  --red:#d40000; --red-text:#d40000; --accent:#eda22c; --accent-text:#c98a1f; --blush:#ffd4d4; --pink:#ffa6ce; --oxblood:#500400;
+  --on-dark:#fff4f4;
+  --display:"Migra", "Didot", "Bodoni 72", Georgia, serif;
+  --body:"Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --intro-block-gap:clamp(56px,7vw,80px);
+  --intro-before-work-gap:clamp(96px,11vw,128px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d0101; --sheet:#1a0605; --ink:#fff4f4; --mute:#bfaeae; --rule:#3a1514;
+  --red-text:#ff6b6b; --accent-text:#eda22c; --blush:#2a0b0a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d0101; --sheet:#1a0605; --ink:#fff4f4; --mute:#bfaeae; --rule:#3a1514;
+  --red-text:#ff6b6b; --accent-text:#eda22c; --blush:#2a0b0a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:300;font-size:16px;line-height:1.65;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+strong,b{font-weight:600}
+.wrap{max-width:1040px;margin:0 auto;padding-block:28px 80px;display:grid;gap:80px}
+h1,h2,h3{font-family:var(--display);font-weight:800;text-wrap:balance;margin:0;line-height:1.08}
+h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+h3{font-size:1.25rem}
+p{margin:0;max-width:65ch}
+em{font-style:italic}
+.brandbar{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  min-height:clamp(76px,11vw,96px);padding:clamp(18px,3vw,26px) clamp(20px,4vw,48px);
+  margin:clamp(-20px,-4vw,-28px) clamp(-20px,-4vw,-48px) 0;
+  border-bottom:1px solid rgba(255,244,244,.18);
+  background:linear-gradient(180deg,rgba(13,1,1,.92) 0%,rgba(13,1,1,.72) 55%,rgba(13,1,1,.35) 100%);
+  position:relative;z-index:1}
+.hero-panel{
+  background-color:#0d0101;
+  background-image:linear-gradient(180deg,rgba(13,1,1,.82) 0%,rgba(80,4,0,.38) 38%,rgba(237,162,44,.14) 52%,rgba(13,1,1,.88) 100%),url(assets/ghosts-of-chinatown-header.png);
+  background-size:cover;background-position:center 35%;background-repeat:no-repeat;
+  color:var(--on-dark);padding:clamp(20px,4vw,28px) clamp(20px,4vw,48px) clamp(28px,5vw,56px);display:grid;gap:clamp(24px,4vw,36px);position:relative;overflow:hidden}
+.hero-panel .nav a{color:rgba(255,244,244,.72)}
+.hero-panel .nav a:hover{color:var(--accent)}
+.mark{display:inline-flex;align-items:center;text-decoration:none;line-height:0}
+.mark img{height:clamp(40px,8vw,52px);width:auto;display:block}
+.nav{display:flex;gap:18px;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.nav a{text-decoration:none;color:var(--mute)}
+.nav a:hover{color:var(--accent-text)}
+.edge{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);display:flex;gap:14px;align-items:center}
+.edge b{color:var(--accent-text)}
+.edge::after{content:"";flex:1;height:1px;background:var(--rule)}
+section{display:grid;gap:24px}
+
+/* hero + intro stack (facts → cast → work) */
+.hero{display:block}
+.intro-stack{display:grid;gap:var(--intro-block-gap)}
+.wrap > header.hero{margin-bottom:calc(var(--intro-block-gap) - 80px)}
+.wrap > .intro-stack + section#work{margin-top:calc(var(--intro-before-work-gap) - 80px)}
+.band{background:transparent;color:var(--on-dark);
+  padding:0;display:grid;gap:18px;position:relative;overflow:hidden}
+.band .edge{color:rgba(255,244,244,.85)}
+.band .edge b{color:var(--accent)}
+.band .edge::after{background:rgba(255,255,255,.35)}
+.hero h1{font-size:clamp(3rem,9vw,6.4rem);letter-spacing:-.01em;position:relative;z-index:1}
+.hero h1 .l{font-weight:200}
+.hero h1 em{font-style:italic;font-weight:800;color:var(--accent)}
+.lede{font-size:1.15rem;max-width:58ch;position:relative;z-index:1}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.facts div{background:var(--sheet);padding:14px 16px;display:grid;gap:2px}
+.facts dt{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.facts dd{margin:0;font-weight:400}
+.cast-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,44%);gap:0;border:1px solid var(--rule);overflow:hidden;background:var(--blush)}
+@media (max-width:720px){.cast-row{grid-template-columns:1fr}}
+.notice{border-left:3px solid var(--accent);background:var(--blush);padding:20px clamp(18px,3vw,28px);display:grid;gap:8px;align-content:center;margin:0}
+.notice p{max-width:none}
+.notice strong{font-family:var(--display);font-size:1.25rem;font-weight:800}
+.cast-photo{margin:0;min-height:200px;background:var(--sheet)}
+.cast-photo img{width:100%;height:100%;min-height:200px;object-fit:cover;object-position:center 42%;display:block}
+
+.cols{display:grid;grid-template-columns:minmax(0,.5fr) minmax(0,1fr);gap:clamp(36px,7vw,80px);align-items:stretch}
+.cols > *{min-width:0;display:grid;gap:16px;align-content:start}
+.cols > div:last-child{padding-left:clamp(20px,4vw,52px);margin-left:auto;width:100%;max-width:640px}
+#work .cols > *{display:flex;flex-direction:column;height:100%;min-height:100%;gap:16px}
+#work .cols > div:first-child::after{content:"";flex:1 1 auto;min-height:0}
+#work .cols > div:last-child{padding-bottom:1.25rem}
+#work .cols > div:last-child::after{content:"";flex:1 1 auto;min-height:1.25rem}
+#work .cols .mv{flex:1 0 auto}
+@media (max-width:760px){.cols{grid-template-columns:1fr}.cols > div:last-child{padding-left:0;margin-left:0;max-width:none}#work .cols > div:first-child::after,#work .cols > div:last-child::after{display:none}#work .cols > div:last-child{padding-bottom:0}}
+
+.mv{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.mv li.has-excerpt{display:grid;grid-template-columns:1.75rem minmax(0,1fr) auto minmax(11rem,46%);grid-template-rows:auto auto;column-gap:12px;row-gap:8px;padding:11px 0;border-bottom:1px solid var(--rule);align-items:start}
+.mv .n{grid-column:1;grid-row:1;font-size:.75rem;color:var(--mute);font-variant-numeric:tabular-nums;align-self:center;padding-top:.2em}
+.mv .t{grid-column:2;grid-row:1;min-width:0;font-size:.94rem;line-height:1.35;white-space:normal}
+.mv-excerpt-wrap{display:contents}
+.mv-excerpt-toggle{grid-column:3;grid-row:1;align-self:center;font:inherit;font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;background:transparent;border:1px solid var(--rule);color:var(--accent-text);padding:4px 9px;border-radius:999px;cursor:pointer;line-height:1.2}
+.mv-excerpt-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.mv-excerpt-toggle[aria-expanded="true"]{background:var(--blush);border-color:var(--accent)}
+.mv-excerpt-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mv .k{grid-column:4;grid-row:1;font-size:.62rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);text-align:right;line-height:1.45;min-width:0;white-space:normal;overflow:visible}
+.mv-excerpt-panel{grid-column:2 / -1;grid-row:2}
+.mv-excerpt-panel audio.mv-excerpt{width:100%;max-width:100%;height:32px;accent-color:var(--accent);display:block}
+.mv li.song .t{font-family:var(--display);font-weight:800;font-size:1.02rem;color:var(--accent)}
+.mv li.song .n{color:var(--accent-text);font-weight:600}
+@media (max-width:640px){
+  .mv li.has-excerpt{grid-template-columns:1.5rem minmax(0,1fr) auto;grid-template-rows:auto auto auto}
+  .mv .k{grid-column:2 / -1;grid-row:2;text-align:left}
+  .mv-excerpt-toggle{grid-column:3;grid-row:1}
+  .mv-excerpt-panel{grid-column:1 / -1;grid-row:3}
+}
+
+.names{font-family:var(--display);font-weight:200;font-size:1.15rem;line-height:1.85;color:var(--mute);max-width:none}
+.names span{color:var(--ink);font-weight:800;font-style:italic}
+.projection-stills{margin:14px auto 0;max-width:100%;width:100%}
+.projection-slideshow{border:1px solid var(--rule);background:#0d0101;display:grid;gap:0}
+.projection-slideshow-viewport{position:relative;aspect-ratio:16/9;overflow:hidden}
+.projection-slideshow-viewport img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .5s ease;pointer-events:none}
+.projection-slideshow-viewport img.is-active{opacity:1;z-index:1}
+@media (prefers-reduced-motion:reduce){.projection-slideshow-viewport img{transition:none}}
+.projection-slideshow-ui{display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 12px;border-top:1px solid var(--rule);background:var(--sheet)}
+.proj-nav{font:inherit;width:34px;height:34px;border:1px solid var(--rule);border-radius:50%;background:var(--sheet);color:var(--ink);cursor:pointer;line-height:1;font-size:1.25rem;padding:0}
+.proj-nav:hover{border-color:var(--accent);color:var(--accent)}
+.proj-nav:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.proj-dots{display:flex;gap:8px;align-items:center}
+.proj-dot{width:9px;height:9px;border-radius:50%;border:1px solid var(--accent);background:transparent;padding:0;cursor:pointer}
+.proj-dot[aria-current="true"]{background:var(--accent)}
+.proj-dot:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.projection-caption{margin:0;padding:10px 14px 14px;font-size:.78rem;font-weight:300;line-height:1.55;color:var(--mute);text-align:center;border-top:1px solid var(--rule);background:var(--sheet)}
+.engagement-gallery{margin-top:clamp(28px,4vw,40px)}
+.engagement-gallery-lede{margin:0 0 14px;font-size:.94rem;color:var(--mute);text-align:center;max-width:52ch;margin-inline:auto}
+
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;align-items:stretch}
+.person{background:var(--sheet);border:1px solid var(--rule);padding:22px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;height:100%}
+.person .photo{width:clamp(112px,28vw,148px);aspect-ratio:1;border-radius:50%;overflow:hidden;border:2px solid var(--rule);background:var(--blush);flex-shrink:0}
+.person .photo img{width:100%;height:100%;object-fit:cover;display:block}
+.person .photo.dashon img{object-position:center 22%}
+.person .photo.david img{object-position:center 12%}
+.person .photo.suna img{object-position:center 28%}
+.person .photo.daix img{object-position:center center}
+.person .photo.dennis img{object-position:center 18%}
+.person .copy{flex:1;display:grid;grid-template-rows:auto auto 1fr auto;gap:10px;justify-items:center;width:100%;align-content:start}
+.person .copy p{align-self:start}
+.person .role{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-text)}
+.person h3{font-size:1.4rem}
+.person p{font-size:.94rem;color:var(--mute);text-align:left;max-width:36ch}
+.person .site-link{display:inline-block;font:inherit;font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:9px 16px;border-radius:999px;background:var(--accent);color:#0d0101}
+.person .site-link:hover{background:#f0b84d}
+.person .site-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.offer{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));border-top:1px solid var(--ink)}
+.offer > div{padding:20px 20px 22px 0;display:grid;gap:8px;align-content:start;border-bottom:1px solid var(--rule)}
+.offer .who{font-size:.68rem;font-weight:600;color:var(--accent-text);letter-spacing:.14em;text-transform:uppercase}
+.offer p{font-size:.95rem}
+
+.fine{font-size:.82rem;color:var(--mute);line-height:1.5}
+
+.tech{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.tech li{display:grid;grid-template-columns:9rem 1fr;gap:14px;font-size:.95rem}
+.tech li b{font-weight:600;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-text);padding-top:4px}
+@media (max-width:480px){.tech li{grid-template-columns:1fr;gap:2px}}
+
+.contact{padding:0;color:var(--on-dark);overflow:hidden}
+.contact-inner{position:relative;min-height:clamp(340px,42vw,440px);display:flex;align-items:center}
+.contact-photo{position:absolute;inset:0;margin:0;z-index:0}
+.contact-photo img{width:100%;height:100%;object-fit:cover;object-position:56% 15%;display:block}
+.contact-inner::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(102deg,#0d0101 0%,#0d0101 16%,var(--oxblood) 32%,rgba(80,4,0,.94) 42%,rgba(80,4,0,.72) 50%,rgba(80,4,0,.42) 58%,rgba(13,1,1,.18) 66%,rgba(13,1,1,.06) 74%,rgba(13,1,1,.02) 82%,transparent 92%)}
+.contact-copy{position:relative;z-index:2;width:min(100%,52%);padding:40px clamp(20px,4vw,48px);display:grid;gap:18px}
+@media (max-width:760px){
+  .contact-inner{min-height:clamp(500px,118vw,620px);align-items:start}
+  .contact-copy{width:100%;max-width:36rem;padding-bottom:28px}
+  .contact-photo img{object-position:54% 18%}
+  .contact-inner::before{background:linear-gradient(180deg,#0d0101 0%,var(--oxblood) 26%,rgba(80,4,0,.92) 44%,rgba(13,1,1,.45) 58%,rgba(13,1,1,.12) 72%,transparent 86%)}
+}
+.contact h2{color:var(--on-dark)}
+.contact p{color:var(--on-dark);opacity:.88}
+.contact .edge{color:rgba(255,244,244,.75)}
+.contact .edge b{color:var(--accent)}
+.contact .edge::after{background:rgba(237,162,44,.35)}
+.addr{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.addr code{font-family:var(--body);font-weight:400;font-size:1rem;border:1px solid rgba(255,244,244,.5);padding:9px 14px;color:var(--on-dark);user-select:all}
+.addr button{font:inherit;font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;padding:11px 18px;border:0;border-radius:999px;background:var(--accent);color:#0d0101;cursor:pointer}
+.addr button:hover{background:#f0b84d}
+.addr button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.contact .fine{color:var(--on-dark);opacity:.72}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
+@media (prefers-reduced-motion:no-preference){.hero h1{animation:rise 1.4s ease-out both}}
+@keyframes rise{from{filter:blur(4px);opacity:.3}to{filter:none;opacity:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="hero-panel">
+    <nav class="brandbar" aria-label="daixcompose">
+      <a class="mark" href="https://www.daixcompose.com" target="_blank" rel="noopener"><img src="assets/daixcompose-logo.png" width="160" height="52" alt="DaiX Compose"></a>
+      <div class="nav"><a href="#work">Work</a><a href="#artists">Artists</a><a href="#booking">Booking</a></div>
+    </nav>
+    <div class="band">
+      <div class="edge"><b>Presenter kit</b> 2027–28 &amp; 2028–29 seasons</div>
+      <h1><span class="l">The Ghosts of</span> <em>Chinatown</em></h1>
+      <p class="lede">A semi-staged song cycle for bass-baritone, viola, and piano by Daixuan Ai, on the 1871 Los Angeles Chinese Massacre. A photographer develops his last pictures of a building marked for demolition, and the eighteen people killed on that ground speak through him.</p>
+    </div>
+  </div>
+</header>
+
+<div class="intro-stack">
+  <dl class="facts">
+    <div><dt>Forces</dt><dd>Bass-baritone, viola, piano</dd></div>
+    <div><dt>Duration</dt><dd>c. 40 minutes, 10 movements</dd></div>
+    <div><dt>Format</dt><dd>Semi-staged, with projections</dd></div>
+    <div><dt>World premiere</dt><dd>Sept 11, 2026 · Turner Hall, Blair School of Music</dd></div>
+    <div><dt>Commissioned by</dt><dd>Vanderbilt University</dd></div>
+  </dl>
+  <div class="cast-row">
+    <div class="notice">
+      <strong>Booked with its premiere cast</strong>
+      <p>Through 2029, <em>The Ghosts of Chinatown</em> is performed exclusively by Dashon Burton, David Samuel, and Sun-A Park. Presenting the work means engaging this trio, with the composer available to join for talks and residency activity.</p>
+    </div>
+    <figure class="cast-photo">
+      <img src="assets/premiere-cast.png" width="1200" height="800" alt="Dashon Burton, David Samuel, Sun-A Park, and Daixuan Ai on stage at the premiere, Turner Hall, Blair School of Music">
+    </figure>
+  </div>
+</div>
+
+<section id="work">
+  <div class="edge"><b>01</b> The work</div>
+  <div class="cols">
+    <div>
+      <h2>Eighteen names, one darkroom</h2>
+      <p>On the night of October 24, 1871, a mob of about five hundred Angelenos descended on Calle de los Negros and killed eighteen Chinese immigrants. It is one of the largest mass lynchings in American history, and one of the least remembered.</p>
+      <p>The cycle follows three of the dead: Dr. Gene Tong, an herbalist who treated Chinese, white, and Hispanic patients alike; Ah Wing, a worker at the Pico House hotel and the first to be lynched; and an unnamed tong fighter who believes he deserves to be forgotten. The photographer allows each spirit to possess him, so a single singer carries every voice.</p>
+      <p>The refrain gives the finale its title: <em>to forgive is to begin to remember</em>. The closing funeral procession quotes the Chinese dirge Āiyuè, offering the victims the farewell they were denied.</p>
+    </div>
+    <div>
+      <ol class="mv">
+        <li class="has-excerpt"><span class="n">1</span><span class="t">Prelude</span><div class="mv-excerpt-wrap"><button type="button" class="mv-excerpt-toggle" aria-expanded="false" aria-controls="excerpt-1">Listen</button><div class="mv-excerpt-panel" id="excerpt-1" hidden><audio class="mv-excerpt" controls preload="none" src="assets/audio/01_Prelude.mp3" title="Excerpt: Prelude"></audio></div></div><span class="k">darkroom</span></li>
+        <li class="song has-excerpt"><span class="n">2</span><span class="t">Snow in June</span><div class="mv-excerpt-wrap"><button type="button" class="mv-excerpt-toggle" aria-expanded="false" aria-controls="excerpt-2">Listen</button><div class="mv-excerpt-panel" id="excerpt-2" hidden><audio class="mv-excerpt" controls preload="none" src="assets/audio/02_Snow_In_June.mp3" title="Excerpt: Snow in June"></audio></div></div><span class="k">Photographer's opening song</span></li>
+        <li class="has-excerpt"><span class="n">3</span><span class="t">First Interlude</span><div class="mv-excerpt-wrap"><button type="button" class="mv-excerpt-toggle" aria-expanded="false" aria-controls="excerpt-3">Listen</button><div class="mv-excerpt-panel" id="excerpt-3" hidden><audio class="mv-excerpt" controls preload="none" src="assets/audio/03_First_Interlude.mp3" title="Excerpt: First Interlude"></audio></div></div><span class="k">spoken</span></li>
+        <li class="song has-excerpt"><span class="n">4</span><span class="t">Let Me Go!</span><div class="mv-excerpt-wrap"><button type="button" class="mv-excerpt-toggle" aria-expanded="false" aria-controls="excerpt-4">Listen</button><div class="mv-excerpt-panel" id="excerpt-4" hidden><audio class="mv-excerpt" controls preload="none" src="assets/audio/04_Let_Me_Go.mp3" title="Excerpt: Let Me Go!"></audio></div></div><span class="k">Dr. Gene Tong's recitative</span></li>
+        <li class="has-excerpt"><span class="n">5</span><span class="t">Second Interlude</span><div class="mv-excerpt-wrap"><button type="button" class="mv-excerpt-toggle" aria-expanded="false" aria-controls="excerpt-5">Listen</button><div class="mv-excerpt-panel" id="excerpt-5" hidden><audio class="mv-excerpt" controls preload="none" src="assets/audio/05_Second_Interlude.mp3" title="Excerpt: Second Interlude"></audio></div></div><span class="k">spoken</span></li>
+        <li class="song has-excerpt"><span class="n">6</span><span class="t">Prosperity Was a Dream</span><div class="mv-excerpt-wrap"><button type="button" class="mv-excerpt-toggle" aria-expanded="false" aria-controls="excerpt-6">Listen</button><div class="mv-excerpt-panel" id="excerpt-6" hidden><audio class="mv-excerpt" controls preload="none" src="assets/audio/06_Prosperity_Was_A_Dream.mp3" title="Excerpt: Prosperity Was a Dream"></audio></div></div><span class="k">Ah Wing's song</span></li>
+        <li class="has-excerpt"><span class="n">7</span><span class="t">Third Interlude</span><div class="mv-excerpt-wrap"><button type="button" class="mv-excerpt-toggle" aria-expanded="false" aria-controls="excerpt-7">Listen</button><div class="mv-excerpt-panel" id="excerpt-7" hidden><audio class="mv-excerpt" controls preload="none" src="assets/audio/07_Third_Interlude.mp3" title="Excerpt: Third Interlude"></audio></div></div><span class="k">roll call</span></li>
+        <li class="song has-excerpt"><span class="n">8</span><span class="t">I Deserve to Be Forgotten</span><div class="mv-excerpt-wrap"><button type="button" class="mv-excerpt-toggle" aria-expanded="false" aria-controls="excerpt-8">Listen</button><div class="mv-excerpt-panel" id="excerpt-8" hidden><audio class="mv-excerpt" controls preload="none" src="assets/audio/08_I_Deserve_To_Be_Forgotten.mp3" title="Excerpt: I Deserve to Be Forgotten"></audio></div></div><span class="k">Tong fighter's confession</span></li>
+        <li class="has-excerpt"><span class="n">9</span><span class="t">Last Interlude</span><div class="mv-excerpt-wrap"><button type="button" class="mv-excerpt-toggle" aria-expanded="false" aria-controls="excerpt-9">Listen</button><div class="mv-excerpt-panel" id="excerpt-9" hidden><audio class="mv-excerpt" controls preload="none" src="assets/audio/09_Last_Interlude.mp3" title="Excerpt: Last Interlude"></audio></div></div><span class="k">spoken</span></li>
+        <li class="song song-finale has-excerpt"><span class="n">10</span><span class="t">To Forgive Is to Begin to Remember</span><div class="mv-excerpt-wrap"><button type="button" class="mv-excerpt-toggle" aria-expanded="false" aria-controls="excerpt-10">Listen</button><div class="mv-excerpt-panel" id="excerpt-10" hidden><audio class="mv-excerpt" controls preload="none" src="assets/audio/10_To_Forgive_Is_To_Begin_To_Remember.mp3" title="Excerpt: To Forgive Is to Begin to Remember"></audio></div></div><span class="k">funeral march, photographer's closing song</span></li>
+      </ol>
+    </div>
+  </div>
+  <p class="names">Read aloud in the Third Interlude, each answered by a single viola pitch: <span>Ah Wing · Gene Tong · Chang Wan · Leong Quai · Ah Long · Wan Foo · Tong Wan · Ah Loo · Day Kee · Ah Waa · Ho Hing · Lo Hey · Ah Won · Wing Chee · Wong Chin · Johnny Burrow · Ah Cut · Wa Sin Quai</span></p>
+  <figure class="projection-stills">
+    <div class="projection-slideshow" data-projection-slideshow>
+      <div class="projection-slideshow-viewport" aria-live="polite">
+        <img class="is-active" src="assets/visuals/visual-01.png" width="1280" height="720" alt="Projection still: These lost souls are Chinese">
+        <img src="assets/visuals/visual-02.png" width="1280" height="720" loading="lazy" alt="Projection still: Eighteen wooden coffins, eighteen souls forgotten">
+        <img src="assets/visuals/visual-03.png" width="1280" height="720" loading="lazy" alt="Projection still: Wild, fierce and wicked">
+        <img src="assets/visuals/visual-04.png" width="1280" height="720" loading="lazy" alt="Projection still: Yet the tragedy does not end there">
+      </div>
+      <div class="projection-slideshow-ui">
+        <button type="button" class="proj-nav proj-prev" aria-label="Previous slide">‹</button>
+        <div class="proj-dots" role="tablist" aria-label="Projection slides">
+          <button type="button" class="proj-dot" role="tab" aria-label="Slide 1" aria-current="true"></button>
+          <button type="button" class="proj-dot" role="tab" aria-label="Slide 2"></button>
+          <button type="button" class="proj-dot" role="tab" aria-label="Slide 3"></button>
+          <button type="button" class="proj-dot" role="tab" aria-label="Slide 4"></button>
+        </div>
+        <button type="button" class="proj-nav proj-next" aria-label="Next slide">›</button>
+      </div>
+      <figcaption class="projection-caption">Video visual designed by Daixuan to be played alongside the performance, blending cinematography and historic photos.</figcaption>
+    </div>
+  </figure>
+</section>
+
+<section id="artists">
+  <div class="edge"><b>02</b> The artists</div>
+  <h2>The premiere team</h2>
+  <div class="team">
+    <article class="person">
+      <div class="photo dashon"><img src="assets/team/dashon-burton.png" width="1200" height="1000" alt="Dashon Burton"></div>
+      <div class="copy">
+        <div class="role">Bass-baritone · The Photographer</div>
+        <h3>Dashon Burton</h3>
+        <p>Three-time Grammy winner, including the 2021 Best Classical Solo Vocal Album for Ethel Smyth's <em>The Prison</em>, and a founding member of Roomful of Teeth. Appears with major orchestras across the U.S. and Europe. Assistant Professor of Voice at Vanderbilt's Blair School of Music.</p>
+        <a class="site-link" href="https://www.dashonburton.com/" target="_blank" rel="noopener noreferrer">Website</a>
+      </div>
+    </article>
+    <article class="person">
+      <div class="photo david"><img src="assets/team/david-samuel.png" width="737" height="1024" alt="David Samuel"></div>
+      <div class="copy">
+        <div class="role">Viola</div>
+        <h3>David Samuel</h3>
+        <p>Founding violist of the Afiara Quartet and later violist of the Alexander String Quartet; former associate principal viola of the Auckland Philharmonia. Juilliard-trained, with recordings on Naxos, CPO, and Dacapo. Assistant Professor of Viola at Blair.</p>
+        <a class="site-link" href="https://violistdavidsamuel.com/" target="_blank" rel="noopener noreferrer">Website</a>
+      </div>
+    </article>
+    <article class="person">
+      <div class="photo suna"><img src="assets/team/sun-a-park.jpg" width="1000" height="600" alt="Sun-A Park"></div>
+      <div class="copy">
+        <div class="role">Piano</div>
+        <h3>Sun-A Park</h3>
+        <p>Korean American pianist and first-prize winner of the Olga and Serge Koussevitzky Young Artists Awards. Has appeared with the Houston and New Jersey symphonies and at the Kennedy Center and Weill Recital Hall. Assistant Professor of Piano at Blair.</p>
+        <a class="site-link" href="https://www.pianosunapark.com/" target="_blank" rel="noopener noreferrer">Website</a>
+      </div>
+    </article>
+    <article class="person">
+      <div class="photo daix"><img src="assets/team/daixuan-ai.jpg" width="447" height="447" alt="Daixuan Ai"></div>
+      <div class="copy">
+        <div class="role">Composer</div>
+        <h3>Daixuan Ai</h3>
+        <p>Chinese-American composer whose work addresses identity, violence, and erased histories. Recipient of the 2025 BMI Foundation Ellen Taaffe Zwilich Award for <em>Silent Theater</em>. Performed by the Chicago Symphony Civic Orchestra, Indianapolis Symphony, and Albany Symphony. Doctoral candidate at Indiana University Jacobs School of Music.</p>
+        <a class="site-link" href="https://daixcompose.com/" target="_blank" rel="noopener noreferrer">Website</a>
+      </div>
+    </article>
+    <article class="person">
+      <div class="photo dennis"><img src="assets/team/dennis-yueh-yeh-li.webp" width="819" height="1023" alt="Dennis Yueh-Yeh Li"></div>
+      <div class="copy">
+        <div class="role">Librettist</div>
+        <h3>Dennis Yueh-Yeh Li</h3>
+        <p>Director and playwright, originally from Taiwan, whose work explores diaspora, power, and immersive storytelling. Affiliated with the Museum of Chinese in America, he conceived the libretto for <em>The Ghosts of Chinatown</em>—the photographer whose images catch the wandering ghosts of the massacre. MA in Performance Studies, New York University.</p>
+        <a class="site-link" href="https://www.dennisyuehyehli.com/" target="_blank" rel="noopener noreferrer">Website</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section>
+  <div class="edge"><b>03</b> Engagement options</div>
+  <h2>Performance, and everything around it</h2>
+  <p>Every engagement centers on a full performance by the trio. Education and community programs can be added for universities, conservatories, schools, museums, and cultural organizations.</p>
+  <div class="offer">
+    <div><span class="who">Dashon Burton</span><h3>Voice masterclass</h3><p>Art song, oratorio, and new-music performance, including Sprechstimme and dramatic text delivery.</p></div>
+    <div><span class="who">David Samuel</span><h3>Viola &amp; chamber masterclass</h3><p>Coaching for violists and chamber ensembles, with a focus on the extended techniques in the score.</p></div>
+    <div><span class="who">Sun-A Park</span><h3>Piano masterclass</h3><p>Solo and collaborative piano, including inside-the-piano techniques used in the cycle.</p></div>
+    <div><span class="who">Daixuan Ai</span><h3>Composition masterclass</h3><p>Reading and feedback session for student composers, or a seminar on writing text-driven music.</p></div>
+    <div><span class="who">Daixuan Ai</span><h3>Lecture: composing an erased history</h3><p>How newspaper archives, court records, and site visits on Los Angeles and Spring Streets became a libretto and a score.</p></div>
+    <div><span class="who">Full team</span><h3>Talkback or community forum</h3><p>Post-performance conversation on the massacre, scapegoating, and Asian American history. Can be co-hosted with local historians or community partners.</p></div>
+  </div>
+  <figure class="projection-stills engagement-gallery">
+    <p class="engagement-gallery-lede">From the Vanderbilt premiere: student research displays, community conversations, and the audience response.</p>
+    <div class="projection-slideshow" data-projection-slideshow>
+      <div class="projection-slideshow-viewport" aria-live="polite">
+        <img src="assets/engagement/01-asian-americans-in-the-south.png" width="768" height="1024" loading="lazy" alt="Student poster: Asian Americans in the South" class="is-active">
+        <img src="assets/engagement/02-standing-ovation.png" width="1024" height="682" loading="lazy" alt="Audience standing ovation after the performance">
+        <img src="assets/engagement/03-poster-display.png" width="1024" height="682" loading="lazy" alt="Attendee viewing the Asian Americans in the South research poster">
+        <img src="assets/engagement/04-community-exhibit.png" width="1024" height="682" loading="lazy" alt="Guests at the lobby exhibit and display">
+        <img src="assets/engagement/05-hanging-prints.png" width="1024" height="682" loading="lazy" alt="Historic photographs on display in the venue">
+      </div>
+      <div class="projection-slideshow-ui">
+        <button type="button" class="proj-nav proj-prev" aria-label="Previous slide">‹</button>
+        <div class="proj-dots" role="tablist" aria-label="Engagement photos">
+          <button type="button" class="proj-dot" role="tab" aria-label="Slide 1" aria-current="true"></button>
+          <button type="button" class="proj-dot" role="tab" aria-label="Slide 2"></button>
+          <button type="button" class="proj-dot" role="tab" aria-label="Slide 3"></button>
+          <button type="button" class="proj-dot" role="tab" aria-label="Slide 4"></button>
+          <button type="button" class="proj-dot" role="tab" aria-label="Slide 5"></button>
+        </div>
+        <button type="button" class="proj-nav proj-next" aria-label="Next slide">›</button>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section>
+  <div class="edge"><b>04</b> Technical overview</div>
+  <div class="cols">
+    <div>
+      <h2>What the stage needs</h2>
+      <p>The staging is spare by design: two playing zones, a work table for the photographer's darkroom, and an isolated chair downstage where each possession takes place. A full stage plan and tech rider are available on request.</p>
+    </div>
+    <ul class="tech">
+      <li><b>Instrument</b><span>Concert grand piano with open lid access; inside-the-piano techniques are used</span></li>
+      <li><b>Projection</b><span>Projector and upstage screen for archival photographs that develop and fade on cue</span></li>
+      <li><b>Lighting</b><span>Red darkroom wash, one spotlight, and a strobe effect in movement 4</span></li>
+      <li><b>Props</b><span>Work table, chair, developing trays, and a clothesline for hanging prints</span></li>
+      <li><b>Space</b><span>Recital halls, black boxes, museum auditoriums, and chamber series venues</span></li>
+      <li><b>Advisory</b><span>Depicts racial violence and lynching; includes strobe lighting. Recommended for ages 14 and up.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact" id="booking">
+  <div class="contact-inner">
+    <figure class="contact-photo">
+      <img src="assets/booking-stage-extended.png" width="1515" height="682" loading="lazy" alt="">
+    </figure>
+    <div class="contact-copy">
+      <div class="edge"><b>05</b> Booking</div>
+      <h2>Bring the work to your season</h2>
+      <p>Dates are open for the 2027–28 and 2028–29 seasons. Email your preferred dates, venue, and which education activities interest you, and we will send a confirmed quote and tech rider.</p>
+      <div class="addr"><code id="email">daix@daixcompose.com</code><button type="button" id="copy">Copy email</button></div>
+      <p class="fine">More about the composer at <a href="https://www.daixcompose.com" target="_blank" rel="noopener">daixcompose.com</a></p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  const show = root => {
+    const slides = [...root.querySelectorAll(".projection-slideshow-viewport img")];
+    const dots = [...root.querySelectorAll(".proj-dot")];
+    let i = slides.findIndex(s => s.classList.contains("is-active"));
+    if (i < 0) i = 0;
+    let timer;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const go = n => {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, j) => s.classList.toggle("is-active", j === i));
+      dots.forEach((d, j) => d.setAttribute("aria-current", j === i ? "true" : "false"));
+    };
+    const auto = () => { clearInterval(timer); if (!reduced) timer = setInterval(() => go(i + 1), 6000); };
+    root.querySelector(".proj-prev")?.addEventListener("click", () => { go(i - 1); auto(); });
+    root.querySelector(".proj-next")?.addEventListener("click", () => { go(i + 1); auto(); });
+    dots.forEach((d, j) => d.addEventListener("click", () => { go(j); auto(); }));
+    root.addEventListener("mouseenter", () => clearInterval(timer));
+    root.addEventListener("mouseleave", auto);
+    root.addEventListener("focusin", () => clearInterval(timer));
+    root.addEventListener("focusout", auto);
+    go(i);
+    auto();
+  };
+  document.querySelectorAll("[data-projection-slideshow]").forEach(show);
+})();
+(function(){
+  function closeExcerpt(wrap, pause) {
+    const btn = wrap.querySelector(".mv-excerpt-toggle");
+    const panel = wrap.querySelector(".mv-excerpt-panel");
+    const audio = wrap.querySelector(".mv-excerpt");
+    btn.setAttribute("aria-expanded", "false");
+    btn.textContent = "Listen";
+    panel.hidden = true;
+    if (pause) audio.pause();
+  }
+  document.querySelectorAll(".mv-excerpt-wrap").forEach(wrap => {
+    const btn = wrap.querySelector(".mv-excerpt-toggle");
+    const panel = wrap.querySelector(".mv-excerpt-panel");
+    const audio = wrap.querySelector(".mv-excerpt");
+    btn.addEventListener("click", () => {
+      const open = btn.getAttribute("aria-expanded") === "true";
+      if (open) { closeExcerpt(wrap, true); return; }
+      document.querySelectorAll(".mv-excerpt-wrap").forEach(w => { if (w !== wrap) closeExcerpt(w, true); });
+      btn.setAttribute("aria-expanded", "true");
+      btn.textContent = "Close";
+      panel.hidden = false;
+      audio.play().catch(() => {});
+    });
+    audio.addEventListener("play", () => {
+      document.querySelectorAll(".mv-excerpt").forEach(a => {
+        if (a !== audio) { a.pause(); closeExcerpt(a.closest(".mv-excerpt-wrap"), false); }
+      });
+    });
+    audio.addEventListener("ended", () => closeExcerpt(wrap, false));
+  });
+})();
+(function(){
+  const copyBtn = document.getElementById("copy");
+  const email = document.getElementById("email");
+  if (!copyBtn || !email) return;
+  copyBtn.onclick = () => {
+    const done = () => { copyBtn.textContent = "Copied"; setTimeout(() => copyBtn.textContent = "Copy email", 1800); };
+    const sel = () => {
+      const r = document.createRange();
+      r.selectNodeContents(email);
+      const s = getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+    };
+    try { navigator.clipboard.writeText(email.textContent).then(done, sel); } catch (e) { sel(); }
+  };
+})();
+</script>
+
+</body>
+</html>
