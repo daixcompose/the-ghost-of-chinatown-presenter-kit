@@ -8,7 +8,7 @@
 - `assets/audio/` — movement excerpt MP3s (01–10) linked from the presenter page
 - `assets/visuals/` — sample projection stills (01–04) below the roll-call note
 - `assets/team/` — premiere team headshots (circular on the artists section)
-- `assets/engagement/` — outreach photos slideshow at the end of section 03
+- `assets/engagement/` — outreach photos slideshow at the end of the artists section
 
 **Change colors or fonts:** search for `BRAND COLORS & FONTS` near the top of `index.html`.
 

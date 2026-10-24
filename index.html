@@ -121,6 +121,10 @@ section{display:grid;gap:24px}
 
 .names{font-family:var(--display);font-weight:200;font-size:1.15rem;line-height:1.85;color:var(--mute);max-width:none}
 .names span{color:var(--ink);font-weight:800;font-style:italic}
+.names-cta{margin:4px 0 0}
+.names-cta a{display:inline-block;font:inherit;font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:9px 16px;border-radius:999px;background:var(--accent);color:#0d0101}
+.names-cta a:hover{background:#f0b84d}
+.names-cta a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .projection-stills{margin:14px auto 0;max-width:100%;width:100%}
 .projection-slideshow{border:1px solid var(--rule);background:#0d0101;display:grid;gap:0}
 .projection-slideshow-viewport{position:relative;aspect-ratio:16/9;overflow:hidden}
@@ -156,11 +160,6 @@ section{display:grid;gap:24px}
 .person .site-link{display:inline-block;font:inherit;font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:9px 16px;border-radius:999px;background:var(--accent);color:#0d0101}
 .person .site-link:hover{background:#f0b84d}
 .person .site-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-
-.offer{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));border-top:1px solid var(--ink)}
-.offer > div{padding:20px 20px 22px 0;display:grid;gap:8px;align-content:start;border-bottom:1px solid var(--rule)}
-.offer .who{font-size:.68rem;font-weight:600;color:var(--accent-text);letter-spacing:.14em;text-transform:uppercase}
-.offer p{font-size:.95rem}
 
 .fine{font-size:.82rem;color:var(--mute);line-height:1.5}
 
@@ -220,7 +219,7 @@ a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
     <div><dt>Duration</dt><dd>c. 40 minutes, 10 movements</dd></div>
     <div><dt>Format</dt><dd>Semi-staged, with projections</dd></div>
     <div><dt>World premiere</dt><dd>Sept 11, 2026 · Turner Hall, Blair School of Music</dd></div>
-    <div><dt>Commissioned by</dt><dd>Vanderbilt University</dd></div>
+    <div><dt>Commissioned by</dt><dd>David Samuel, Vanderbilt University</dd></div>
   </dl>
   <div class="cast-row">
     <div class="notice">
@@ -258,6 +257,7 @@ a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
     </div>
   </div>
   <p class="names">Read aloud in the Third Interlude, each answered by a single viola pitch: <span>Ah Wing · Gene Tong · Chang Wan · Leong Quai · Ah Long · Wan Foo · Tong Wan · Ah Loo · Day Kee · Ah Waa · Ho Hing · Lo Hey · Ah Won · Wing Chee · Wong Chin · Johnny Burrow · Ah Cut · Wa Sin Quai</span></p>
+  <p class="names-cta"><a href="https://daixcompose.com/music/the-ghosts-of-chinatown" target="_blank" rel="noopener noreferrer">More about the music</a></p>
   <figure class="projection-stills">
     <div class="projection-slideshow" data-projection-slideshow>
       <div class="projection-slideshow-viewport" aria-live="polite">
@@ -297,7 +297,7 @@ a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
     <article class="person">
       <div class="photo david"><img src="assets/team/david-samuel.png" width="737" height="1024" alt="David Samuel"></div>
       <div class="copy">
-        <div class="role">Viola</div>
+        <div class="role">Viola · Commissioner</div>
         <h3>David Samuel</h3>
         <p>Founding violist of the Afiara Quartet and later violist of the Alexander String Quartet; former associate principal viola of the Auckland Philharmonia. Juilliard-trained, with recordings on Naxos, CPO, and Dacapo. Assistant Professor of Viola at Blair.</p>
         <a class="site-link" href="https://violistdavidsamuel.com/" target="_blank" rel="noopener noreferrer">Website</a>
@@ -331,20 +331,6 @@ a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
       </div>
     </article>
   </div>
-</section>
-
-<section>
-  <div class="edge"><b>03</b> Engagement options</div>
-  <h2>Performance, and everything around it</h2>
-  <p>Every engagement centers on a full performance by the trio. Education and community programs can be added for universities, conservatories, schools, museums, and cultural organizations.</p>
-  <div class="offer">
-    <div><span class="who">Dashon Burton</span><h3>Voice masterclass</h3><p>Art song, oratorio, and new-music performance, including Sprechstimme and dramatic text delivery.</p></div>
-    <div><span class="who">David Samuel</span><h3>Viola &amp; chamber masterclass</h3><p>Coaching for violists and chamber ensembles, with a focus on the extended techniques in the score.</p></div>
-    <div><span class="who">Sun-A Park</span><h3>Piano masterclass</h3><p>Solo and collaborative piano, including inside-the-piano techniques used in the cycle.</p></div>
-    <div><span class="who">Daixuan Ai</span><h3>Composition masterclass</h3><p>Reading and feedback session for student composers, or a seminar on writing text-driven music.</p></div>
-    <div><span class="who">Daixuan Ai</span><h3>Lecture: composing an erased history</h3><p>How newspaper archives, court records, and site visits on Los Angeles and Spring Streets became a libretto and a score.</p></div>
-    <div><span class="who">Full team</span><h3>Talkback or community forum</h3><p>Post-performance conversation on the massacre, scapegoating, and Asian American history. Can be co-hosted with local historians or community partners.</p></div>
-  </div>
   <figure class="projection-stills engagement-gallery">
     <p class="engagement-gallery-lede">From the Vanderbilt premiere: student research displays, community conversations, and the audience response.</p>
     <div class="projection-slideshow" data-projection-slideshow>
@@ -371,7 +357,7 @@ a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
 </section>
 
 <section>
-  <div class="edge"><b>04</b> Technical overview</div>
+  <div class="edge"><b>03</b> Technical overview</div>
   <div class="cols">
     <div>
       <h2>What the stage needs</h2>
@@ -394,9 +380,9 @@ a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
       <img src="assets/booking-stage-extended.png" width="1515" height="682" loading="lazy" alt="">
     </figure>
     <div class="contact-copy">
-      <div class="edge"><b>05</b> Booking</div>
+      <div class="edge"><b>04</b> Booking</div>
       <h2>Bring the work to your season</h2>
-      <p>Dates are open for the 2027–28 and 2028–29 seasons. Email your preferred dates, venue, and which education activities interest you, and we will send a confirmed quote and tech rider.</p>
+      <p>Dates are open for the 2027–28 and 2028–29 seasons. Email your preferred dates, venue, and I'll reach out to discuss more details.</p>
       <div class="addr"><code id="email">daix@daixcompose.com</code><button type="button" id="copy">Copy email</button></div>
       <p class="fine">More about the composer at <a href="https://www.daixcompose.com" target="_blank" rel="noopener">daixcompose.com</a></p>
     </div>
