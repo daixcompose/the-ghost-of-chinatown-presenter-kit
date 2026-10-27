@@ -66,7 +66,9 @@ section{display:grid;gap:24px}
 .hero{display:block}
 .intro-stack{display:grid;gap:var(--intro-block-gap)}
 .wrap > header.hero{margin-bottom:calc(var(--intro-block-gap) - 80px)}
-.wrap > .intro-stack + section#work{margin-top:calc(var(--intro-before-work-gap) - 80px)}
+.wrap > .intro-stack + section#trailer{margin-top:calc(var(--intro-before-work-gap) - 80px)}
+.trailer-frame{position:relative;aspect-ratio:16/9;border:1px solid var(--rule);background:#0d0101;overflow:hidden}
+.trailer-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .band{background:transparent;color:var(--on-dark);
   padding:0;display:grid;gap:18px;position:relative;overflow:hidden}
 .band .edge{color:rgba(255,244,244,.85)}
@@ -75,7 +77,8 @@ section{display:grid;gap:24px}
 .hero h1{font-size:clamp(3rem,9vw,6.4rem);letter-spacing:-.01em;position:relative;z-index:1}
 .hero h1 .l{font-weight:200}
 .hero h1 em{font-style:italic;font-weight:800;color:var(--accent)}
-.lede{font-size:1.15rem;max-width:58ch;position:relative;z-index:1}
+.lede-block{display:grid;gap:.9em;position:relative;z-index:1}
+.lede{font-size:1.15rem;max-width:58ch}
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
 .facts div{background:var(--sheet);padding:14px 16px;display:grid;gap:2px}
 .facts dt{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
@@ -192,6 +195,33 @@ section{display:grid;gap:24px}
 .addr button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .contact .fine{color:var(--on-dark);opacity:.72}
 a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
+/* why now */
+.why-lede{font-size:1.08rem;max-width:68ch}
+.timeline{overflow-x:auto;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);padding-block:10px}
+.timeline svg{display:block;min-width:700px;width:100%;height:auto}
+.tl text{font-family:var(--body);font-size:13px}
+.tl .ink{fill:var(--ink)} .tl .mute{fill:var(--mute)} .tl .red{fill:var(--red-text)}
+.tl .b{font-weight:600} .tl .cap{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.stat{background:var(--sheet);border:1px solid var(--rule);padding:22px;display:grid;gap:12px;align-content:start}
+.stat .k{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.stat .big{font-family:var(--display);font-weight:800;font-size:2.6rem;line-height:1;color:var(--red-text);font-variant-numeric:tabular-nums}
+.stat p{font-size:.94rem;color:var(--mute);max-width:none}
+.stat p b{color:var(--ink)}
+.stat svg{width:100%;height:auto;display:block}
+.stat .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.8rem;color:var(--mute)}
+.stat .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.book{border-color:var(--ink)}
+.book h3{font-style:italic;font-size:1.6rem}
+.ph{margin:0;display:grid;gap:6px}
+.ph img{width:100%;height:auto;display:block}
+.ph figcaption{font-size:.78rem;color:var(--mute);line-height:1.45}
+.bookpics{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:start}
+.bookpics img{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;display:block}
+.uses{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.uses div{background:var(--sheet);padding:16px 18px;display:grid;gap:4px;align-content:start}
+.uses b{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--red-text)}
+.uses span{font-size:.94rem}
 @media (prefers-reduced-motion:no-preference){.hero h1{animation:rise 1.4s ease-out both}}
 @keyframes rise{from{filter:blur(4px);opacity:.3}to{filter:none;opacity:1}}
 </style>
@@ -203,12 +233,15 @@ a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
   <div class="hero-panel">
     <nav class="brandbar" aria-label="daixcompose">
       <a class="mark" href="https://www.daixcompose.com" target="_blank" rel="noopener"><img src="assets/daixcompose-logo.png" width="160" height="52" alt="DaiX Compose"></a>
-      <div class="nav"><a href="#work">Work</a><a href="#artists">Artists</a><a href="#booking">Booking</a></div>
+      <div class="nav"><a href="#trailer">Trailer</a><a href="#work">Work</a><a href="#why">Why now</a><a href="#artists">Artists</a><a href="#booking">Booking</a></div>
     </nav>
     <div class="band">
       <div class="edge"><b>Presenter kit</b> 2027–28 &amp; 2028–29 seasons</div>
       <h1><span class="l">The Ghosts of</span> <em>Chinatown</em></h1>
-      <p class="lede">A semi-staged song cycle for bass-baritone, viola, and piano by Daixuan Ai, on the 1871 Los Angeles Chinese Massacre. A photographer develops his last pictures of a building marked for demolition, and the eighteen people killed on that ground speak through him.</p>
+      <div class="lede-block">
+        <p class="lede">A semi-staged song cycle for bass-baritone, viola, and piano on the 1871 Los Angeles Chinese Massacre. Daixuan Ai’s Ghost of Chinatown is vocal chamber music conceived as a one-man opera, weaving history, theater, projected imagery, and virtuosic writing into a single unbroken act.</p>
+        <p class="lede">In his darkroom, a photographer develops his last pictures of a neighborhood marked for demolition, and the dead of that ground begin to speak through him...</p>
+      </div>
     </div>
   </div>
 </header>
@@ -232,8 +265,16 @@ a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
   </div>
 </div>
 
+<section id="trailer">
+  <div class="edge"><b>01</b> Trailer</div>
+  <h2>Ghosts of Chinatown Trailer</h2>
+  <div class="trailer-frame">
+    <iframe src="https://www.youtube-nocookie.com/embed/HI_n98pC36s" title="Ghosts of Chinatown Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+  </div>
+</section>
+
 <section id="work">
-  <div class="edge"><b>01</b> The work</div>
+  <div class="edge"><b>02</b> The work</div>
   <div class="cols">
     <div>
       <h2>Eighteen names, one darkroom</h2>
@@ -281,8 +322,78 @@ a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
   </figure>
 </section>
 
+<section id="why">
+  <div class="edge"><b>03</b> Why now</div>
+  <h2>Los Angeles is remembering, and the world arrives in 2028</h2>
+  <p class="why-lede">For 150 years, one bronze plaque marked the massacre. Now the city is building its first full memorial, a bestselling novelist has brought the story to a national readership, and LA28 will put Los Angeles history in front of a global audience. The 2027–28 and 2028–29 seasons sit right in that window.</p>
+  
+<div class="timeline">
+<svg class="tl" viewBox="0 0 1000 290" role="img" aria-labelledby="tl-t tl-d">
+<title id="tl-t">Timeline, 2026 to 2029</title>
+<desc id="tl-d">The novel publishes June 9, 2026 and the premiere is September 11, 2026. The booking window covers the 2027–28 and 2028–29 seasons, which include the LA28 Olympics, July 14–30, 2028, the Paralympics, August 15–27, 2028, and two October 24 anniversaries. The premiere cast is exclusive through 2029.</desc>
+<rect x="423.3" y="28" width="412.1" height="92" fill="var(--blush)"><title>Booking window: 2027–28 and 2028–29 seasons</title></rect>
+<text x="431.3" y="46" class="red cap">Your booking window</text>
+<text x="431.3" y="63" class="mute">2027–28 &amp; 2028–29 seasons</text>
+<rect x="623.2" y="72" width="27.6" height="48" fill="var(--red)"><title>LA28 Olympics Jul 14–30 and Paralympics Aug 15–27, 2028</title></rect>
+<text x="658.8" y="88" class="ink b">LA28 Games</text>
+<text x="658.8" y="105" class="mute">Jul 14 – Aug 27, 2028</text>
+<line x1="40" y1="120" x2="960" y2="120" stroke="var(--ink)" stroke-width="1.5"/>
+<line x1="40.0" y1="120" x2="40.0" y2="128" stroke="var(--ink)"/><text x="40.0" y="144" text-anchor="middle" class="mute">2026</text><line x1="270.0" y1="120" x2="270.0" y2="128" stroke="var(--ink)"/><text x="270.0" y="144" text-anchor="middle" class="mute">2027</text><line x1="500.0" y1="120" x2="500.0" y2="128" stroke="var(--ink)"/><text x="500.0" y="144" text-anchor="middle" class="mute">2028</text><line x1="730.0" y1="120" x2="730.0" y2="128" stroke="var(--ink)"/><text x="730.0" y="144" text-anchor="middle" class="mute">2029</text><line x1="960.0" y1="120" x2="960.0" y2="128" stroke="var(--ink)"/><text x="960.0" y="144" text-anchor="middle" class="mute">2030</text>
+<line x1="141.6" y1="92" x2="141.6" y2="120" stroke="var(--ink)"/>
+<circle cx="141.6" cy="120" r="5" fill="var(--ink)"/>
+<text x="149.6" y="88" class="ink b">Lisa See novel</text>
+<text x="149.6" y="105" class="mute">Jun 9, 2026</text>
+<line x1="200.0" y1="120" x2="200.0" y2="160" stroke="var(--red)"/>
+<circle cx="200.0" cy="120" r="6" fill="var(--red)"><title>World premiere, Sept 11, 2026</title></circle>
+<text x="208.0" y="170" class="ink b">World premiere</text>
+<text x="208.0" y="187" class="mute">Sep 11, 2026 · Nashville</text>
+<path d="M457.3 114 l6 6 -6 6 -6 -6z" fill="var(--ink)"><title>Anniversary, Oct 24, 2027</title></path>
+<path d="M687.3 114 l6 6 -6 6 -6 -6z" fill="var(--ink)"><title>Anniversary, Oct 24, 2028</title></path>
+<line x1="457.3" y1="126" x2="457.3" y2="160" stroke="var(--rule)"/>
+<line x1="687.3" y1="126" x2="687.3" y2="160" stroke="var(--rule)"/>
+<text x="465.3" y="170" class="ink b">Oct 24 anniversary</text>
+<text x="465.3" y="187" class="mute">Sunday, 2027</text>
+<text x="695.3" y="170" class="ink b">Oct 24 anniversary</text>
+<text x="695.3" y="187" class="mute">Tuesday, 2028</text>
+<line x1="40" y1="222" x2="623.2" y2="222" stroke="var(--red)" stroke-width="2" stroke-dasharray="6 5"/>
+<circle cx="623.2" cy="222" r="4" fill="var(--red)"/>
+<text x="40" y="242" class="mute">1871 Memorial · first site targeted for 2026, remaining sites planned before the Games</text>
+<line x1="200.0" y1="262" x2="960" y2="262" stroke="var(--ink)" stroke-width="2"/>
+<text x="200.0" y="282" class="mute">Premiere cast performs the work exclusively through 2029</text>
+</svg>
+</div>
+  <div class="why-grid">
+    <div class="stat">
+      <span class="k">The scale</span>
+      <span class="big">1 in 10</span>
+      <svg viewBox="0 0 274 140" role="img" aria-label="200 dots for about 200 Chinese residents; 18 are marked red for those killed"><title>18 of about 200 Chinese residents killed</title><circle cx="8.0" cy="8.0" r="5" fill="var(--red)"/><circle cx="21.6" cy="8.0" r="5" fill="var(--red)"/><circle cx="35.2" cy="8.0" r="5" fill="var(--red)"/><circle cx="48.8" cy="8.0" r="5" fill="var(--red)"/><circle cx="62.4" cy="8.0" r="5" fill="var(--red)"/><circle cx="76.0" cy="8.0" r="5" fill="var(--red)"/><circle cx="89.6" cy="8.0" r="5" fill="var(--red)"/><circle cx="103.2" cy="8.0" r="5" fill="var(--red)"/><circle cx="116.8" cy="8.0" r="5" fill="var(--red)"/><circle cx="130.4" cy="8.0" r="5" fill="var(--red)"/><circle cx="144.0" cy="8.0" r="5" fill="var(--red)"/><circle cx="157.6" cy="8.0" r="5" fill="var(--red)"/><circle cx="171.2" cy="8.0" r="5" fill="var(--red)"/><circle cx="184.8" cy="8.0" r="5" fill="var(--red)"/><circle cx="198.4" cy="8.0" r="5" fill="var(--red)"/><circle cx="212.0" cy="8.0" r="5" fill="var(--red)"/><circle cx="225.6" cy="8.0" r="5" fill="var(--red)"/><circle cx="239.2" cy="8.0" r="5" fill="var(--red)"/><circle cx="252.8" cy="8.0" r="5" fill="var(--rule)"/><circle cx="266.4" cy="8.0" r="5" fill="var(--rule)"/><circle cx="8.0" cy="21.6" r="5" fill="var(--rule)"/><circle cx="21.6" cy="21.6" r="5" fill="var(--rule)"/><circle cx="35.2" cy="21.6" r="5" fill="var(--rule)"/><circle cx="48.8" cy="21.6" r="5" fill="var(--rule)"/><circle cx="62.4" cy="21.6" r="5" fill="var(--rule)"/><circle cx="76.0" cy="21.6" r="5" fill="var(--rule)"/><circle cx="89.6" cy="21.6" r="5" fill="var(--rule)"/><circle cx="103.2" cy="21.6" r="5" fill="var(--rule)"/><circle cx="116.8" cy="21.6" r="5" fill="var(--rule)"/><circle cx="130.4" cy="21.6" r="5" fill="var(--rule)"/><circle cx="144.0" cy="21.6" r="5" fill="var(--rule)"/><circle cx="157.6" cy="21.6" r="5" fill="var(--rule)"/><circle cx="171.2" cy="21.6" r="5" fill="var(--rule)"/><circle cx="184.8" cy="21.6" r="5" fill="var(--rule)"/><circle cx="198.4" cy="21.6" r="5" fill="var(--rule)"/><circle cx="212.0" cy="21.6" r="5" fill="var(--rule)"/><circle cx="225.6" cy="21.6" r="5" fill="var(--rule)"/><circle cx="239.2" cy="21.6" r="5" fill="var(--rule)"/><circle cx="252.8" cy="21.6" r="5" fill="var(--rule)"/><circle cx="266.4" cy="21.6" r="5" fill="var(--rule)"/><circle cx="8.0" cy="35.2" r="5" fill="var(--rule)"/><circle cx="21.6" cy="35.2" r="5" fill="var(--rule)"/><circle cx="35.2" cy="35.2" r="5" fill="var(--rule)"/><circle cx="48.8" cy="35.2" r="5" fill="var(--rule)"/><circle cx="62.4" cy="35.2" r="5" fill="var(--rule)"/><circle cx="76.0" cy="35.2" r="5" fill="var(--rule)"/><circle cx="89.6" cy="35.2" r="5" fill="var(--rule)"/><circle cx="103.2" cy="35.2" r="5" fill="var(--rule)"/><circle cx="116.8" cy="35.2" r="5" fill="var(--rule)"/><circle cx="130.4" cy="35.2" r="5" fill="var(--rule)"/><circle cx="144.0" cy="35.2" r="5" fill="var(--rule)"/><circle cx="157.6" cy="35.2" r="5" fill="var(--rule)"/><circle cx="171.2" cy="35.2" r="5" fill="var(--rule)"/><circle cx="184.8" cy="35.2" r="5" fill="var(--rule)"/><circle cx="198.4" cy="35.2" r="5" fill="var(--rule)"/><circle cx="212.0" cy="35.2" r="5" fill="var(--rule)"/><circle cx="225.6" cy="35.2" r="5" fill="var(--rule)"/><circle cx="239.2" cy="35.2" r="5" fill="var(--rule)"/><circle cx="252.8" cy="35.2" r="5" fill="var(--rule)"/><circle cx="266.4" cy="35.2" r="5" fill="var(--rule)"/><circle cx="8.0" cy="48.8" r="5" fill="var(--rule)"/><circle cx="21.6" cy="48.8" r="5" fill="var(--rule)"/><circle cx="35.2" cy="48.8" r="5" fill="var(--rule)"/><circle cx="48.8" cy="48.8" r="5" fill="var(--rule)"/><circle cx="62.4" cy="48.8" r="5" fill="var(--rule)"/><circle cx="76.0" cy="48.8" r="5" fill="var(--rule)"/><circle cx="89.6" cy="48.8" r="5" fill="var(--rule)"/><circle cx="103.2" cy="48.8" r="5" fill="var(--rule)"/><circle cx="116.8" cy="48.8" r="5" fill="var(--rule)"/><circle cx="130.4" cy="48.8" r="5" fill="var(--rule)"/><circle cx="144.0" cy="48.8" r="5" fill="var(--rule)"/><circle cx="157.6" cy="48.8" r="5" fill="var(--rule)"/><circle cx="171.2" cy="48.8" r="5" fill="var(--rule)"/><circle cx="184.8" cy="48.8" r="5" fill="var(--rule)"/><circle cx="198.4" cy="48.8" r="5" fill="var(--rule)"/><circle cx="212.0" cy="48.8" r="5" fill="var(--rule)"/><circle cx="225.6" cy="48.8" r="5" fill="var(--rule)"/><circle cx="239.2" cy="48.8" r="5" fill="var(--rule)"/><circle cx="252.8" cy="48.8" r="5" fill="var(--rule)"/><circle cx="266.4" cy="48.8" r="5" fill="var(--rule)"/><circle cx="8.0" cy="62.4" r="5" fill="var(--rule)"/><circle cx="21.6" cy="62.4" r="5" fill="var(--rule)"/><circle cx="35.2" cy="62.4" r="5" fill="var(--rule)"/><circle cx="48.8" cy="62.4" r="5" fill="var(--rule)"/><circle cx="62.4" cy="62.4" r="5" fill="var(--rule)"/><circle cx="76.0" cy="62.4" r="5" fill="var(--rule)"/><circle cx="89.6" cy="62.4" r="5" fill="var(--rule)"/><circle cx="103.2" cy="62.4" r="5" fill="var(--rule)"/><circle cx="116.8" cy="62.4" r="5" fill="var(--rule)"/><circle cx="130.4" cy="62.4" r="5" fill="var(--rule)"/><circle cx="144.0" cy="62.4" r="5" fill="var(--rule)"/><circle cx="157.6" cy="62.4" r="5" fill="var(--rule)"/><circle cx="171.2" cy="62.4" r="5" fill="var(--rule)"/><circle cx="184.8" cy="62.4" r="5" fill="var(--rule)"/><circle cx="198.4" cy="62.4" r="5" fill="var(--rule)"/><circle cx="212.0" cy="62.4" r="5" fill="var(--rule)"/><circle cx="225.6" cy="62.4" r="5" fill="var(--rule)"/><circle cx="239.2" cy="62.4" r="5" fill="var(--rule)"/><circle cx="252.8" cy="62.4" r="5" fill="var(--rule)"/><circle cx="266.4" cy="62.4" r="5" fill="var(--rule)"/><circle cx="8.0" cy="76.0" r="5" fill="var(--rule)"/><circle cx="21.6" cy="76.0" r="5" fill="var(--rule)"/><circle cx="35.2" cy="76.0" r="5" fill="var(--rule)"/><circle cx="48.8" cy="76.0" r="5" fill="var(--rule)"/><circle cx="62.4" cy="76.0" r="5" fill="var(--rule)"/><circle cx="76.0" cy="76.0" r="5" fill="var(--rule)"/><circle cx="89.6" cy="76.0" r="5" fill="var(--rule)"/><circle cx="103.2" cy="76.0" r="5" fill="var(--rule)"/><circle cx="116.8" cy="76.0" r="5" fill="var(--rule)"/><circle cx="130.4" cy="76.0" r="5" fill="var(--rule)"/><circle cx="144.0" cy="76.0" r="5" fill="var(--rule)"/><circle cx="157.6" cy="76.0" r="5" fill="var(--rule)"/><circle cx="171.2" cy="76.0" r="5" fill="var(--rule)"/><circle cx="184.8" cy="76.0" r="5" fill="var(--rule)"/><circle cx="198.4" cy="76.0" r="5" fill="var(--rule)"/><circle cx="212.0" cy="76.0" r="5" fill="var(--rule)"/><circle cx="225.6" cy="76.0" r="5" fill="var(--rule)"/><circle cx="239.2" cy="76.0" r="5" fill="var(--rule)"/><circle cx="252.8" cy="76.0" r="5" fill="var(--rule)"/><circle cx="266.4" cy="76.0" r="5" fill="var(--rule)"/><circle cx="8.0" cy="89.6" r="5" fill="var(--rule)"/><circle cx="21.6" cy="89.6" r="5" fill="var(--rule)"/><circle cx="35.2" cy="89.6" r="5" fill="var(--rule)"/><circle cx="48.8" cy="89.6" r="5" fill="var(--rule)"/><circle cx="62.4" cy="89.6" r="5" fill="var(--rule)"/><circle cx="76.0" cy="89.6" r="5" fill="var(--rule)"/><circle cx="89.6" cy="89.6" r="5" fill="var(--rule)"/><circle cx="103.2" cy="89.6" r="5" fill="var(--rule)"/><circle cx="116.8" cy="89.6" r="5" fill="var(--rule)"/><circle cx="130.4" cy="89.6" r="5" fill="var(--rule)"/><circle cx="144.0" cy="89.6" r="5" fill="var(--rule)"/><circle cx="157.6" cy="89.6" r="5" fill="var(--rule)"/><circle cx="171.2" cy="89.6" r="5" fill="var(--rule)"/><circle cx="184.8" cy="89.6" r="5" fill="var(--rule)"/><circle cx="198.4" cy="89.6" r="5" fill="var(--rule)"/><circle cx="212.0" cy="89.6" r="5" fill="var(--rule)"/><circle cx="225.6" cy="89.6" r="5" fill="var(--rule)"/><circle cx="239.2" cy="89.6" r="5" fill="var(--rule)"/><circle cx="252.8" cy="89.6" r="5" fill="var(--rule)"/><circle cx="266.4" cy="89.6" r="5" fill="var(--rule)"/><circle cx="8.0" cy="103.2" r="5" fill="var(--rule)"/><circle cx="21.6" cy="103.2" r="5" fill="var(--rule)"/><circle cx="35.2" cy="103.2" r="5" fill="var(--rule)"/><circle cx="48.8" cy="103.2" r="5" fill="var(--rule)"/><circle cx="62.4" cy="103.2" r="5" fill="var(--rule)"/><circle cx="76.0" cy="103.2" r="5" fill="var(--rule)"/><circle cx="89.6" cy="103.2" r="5" fill="var(--rule)"/><circle cx="103.2" cy="103.2" r="5" fill="var(--rule)"/><circle cx="116.8" cy="103.2" r="5" fill="var(--rule)"/><circle cx="130.4" cy="103.2" r="5" fill="var(--rule)"/><circle cx="144.0" cy="103.2" r="5" fill="var(--rule)"/><circle cx="157.6" cy="103.2" r="5" fill="var(--rule)"/><circle cx="171.2" cy="103.2" r="5" fill="var(--rule)"/><circle cx="184.8" cy="103.2" r="5" fill="var(--rule)"/><circle cx="198.4" cy="103.2" r="5" fill="var(--rule)"/><circle cx="212.0" cy="103.2" r="5" fill="var(--rule)"/><circle cx="225.6" cy="103.2" r="5" fill="var(--rule)"/><circle cx="239.2" cy="103.2" r="5" fill="var(--rule)"/><circle cx="252.8" cy="103.2" r="5" fill="var(--rule)"/><circle cx="266.4" cy="103.2" r="5" fill="var(--rule)"/><circle cx="8.0" cy="116.8" r="5" fill="var(--rule)"/><circle cx="21.6" cy="116.8" r="5" fill="var(--rule)"/><circle cx="35.2" cy="116.8" r="5" fill="var(--rule)"/><circle cx="48.8" cy="116.8" r="5" fill="var(--rule)"/><circle cx="62.4" cy="116.8" r="5" fill="var(--rule)"/><circle cx="76.0" cy="116.8" r="5" fill="var(--rule)"/><circle cx="89.6" cy="116.8" r="5" fill="var(--rule)"/><circle cx="103.2" cy="116.8" r="5" fill="var(--rule)"/><circle cx="116.8" cy="116.8" r="5" fill="var(--rule)"/><circle cx="130.4" cy="116.8" r="5" fill="var(--rule)"/><circle cx="144.0" cy="116.8" r="5" fill="var(--rule)"/><circle cx="157.6" cy="116.8" r="5" fill="var(--rule)"/><circle cx="171.2" cy="116.8" r="5" fill="var(--rule)"/><circle cx="184.8" cy="116.8" r="5" fill="var(--rule)"/><circle cx="198.4" cy="116.8" r="5" fill="var(--rule)"/><circle cx="212.0" cy="116.8" r="5" fill="var(--rule)"/><circle cx="225.6" cy="116.8" r="5" fill="var(--rule)"/><circle cx="239.2" cy="116.8" r="5" fill="var(--rule)"/><circle cx="252.8" cy="116.8" r="5" fill="var(--rule)"/><circle cx="266.4" cy="116.8" r="5" fill="var(--rule)"/><circle cx="8.0" cy="130.4" r="5" fill="var(--rule)"/><circle cx="21.6" cy="130.4" r="5" fill="var(--rule)"/><circle cx="35.2" cy="130.4" r="5" fill="var(--rule)"/><circle cx="48.8" cy="130.4" r="5" fill="var(--rule)"/><circle cx="62.4" cy="130.4" r="5" fill="var(--rule)"/><circle cx="76.0" cy="130.4" r="5" fill="var(--rule)"/><circle cx="89.6" cy="130.4" r="5" fill="var(--rule)"/><circle cx="103.2" cy="130.4" r="5" fill="var(--rule)"/><circle cx="116.8" cy="130.4" r="5" fill="var(--rule)"/><circle cx="130.4" cy="130.4" r="5" fill="var(--rule)"/><circle cx="144.0" cy="130.4" r="5" fill="var(--rule)"/><circle cx="157.6" cy="130.4" r="5" fill="var(--rule)"/><circle cx="171.2" cy="130.4" r="5" fill="var(--rule)"/><circle cx="184.8" cy="130.4" r="5" fill="var(--rule)"/><circle cx="198.4" cy="130.4" r="5" fill="var(--rule)"/><circle cx="212.0" cy="130.4" r="5" fill="var(--rule)"/><circle cx="225.6" cy="130.4" r="5" fill="var(--rule)"/><circle cx="239.2" cy="130.4" r="5" fill="var(--rule)"/><circle cx="252.8" cy="130.4" r="5" fill="var(--rule)"/><circle cx="266.4" cy="130.4" r="5" fill="var(--rule)"/></svg>
+<div class="legend"><span><i style="background:var(--red)"></i>Killed, 18</span><span><i style="background:var(--rule)"></i>Chinese Angelenos, c. 200</span></div>
+      <p>In one night the mob killed <b>18 of about 200</b> Chinese residents of Los Angeles. The mob itself, about 500 people, was close to a tenth of the whole town.</p>
+    </div>
+    <div class="stat">
+      <span class="k">The memorial</span>
+      <span class="big">1 → 18</span>
+      <figure class="ph"><img src="why-now-section/memorial-rendering.jpg" alt="Rendering of the planned memorial: tall granite trunks shaped like banyan trees stand along a paved sidewalk under pepper trees, with visitors walking among them" width="1200" height="720" loading="lazy"><figcaption>Rendering: Sze Tsung Nicolás Leong and Judy Chui-Hua Chung, courtesy City of Los Angeles Department of Cultural Affairs. Final design may differ.</figcaption></figure>
+      <p>The planned memorial places <b>18 granite banyan trunks</b> on the former Calle de los Negros, one per victim, with satellite sites from El Pueblo to Union Station. The 1871 Memorial Project is raising $12 million to finish it before the Games.</p>
+    </div>
+    <div class="stat book">
+      <span class="k">The book</span>
+      <div class="bookpics"><img src="why-now-section/daughters-sun-moon-cover.jpg" alt="Cover of Daughters of the Sun and Moon by Lisa See" width="600" height="911" loading="lazy"><img src="why-now-section/lisa-see-portrait.jpg" alt="Lisa See" width="600" height="900" loading="lazy"></div>
+      <h3>Daughters of the Sun and Moon</h3>
+      <p><b>Lisa See</b> · Scribner · June 9, 2026</p>
+      <p>The New York Times bestselling author's new novel builds to the night of October 24, 1871. Dr. Chee Long Tong, the herbalist at the center of <em>Let Me Go!</em>, appears in both works. See also serves on the board of the 1871 Memorial Project.</p>
+    </div>
+  </div>
+  <div class="uses">
+    <div><b>Olympic summer</b><span>Program it as cultural content around LA28, July 14–30, and the Paralympics, August 15–27, 2028.</span></div>
+    <div><b>Community read</b><span>Pair a performance with a library or book-club read of See's novel.</span></div>
+    <div><b>Anniversary week</b><span>October 24 falls inside both booking seasons, alongside annual commemorations in Los Angeles.</span></div>
+  </div>
+  <p class="fine">Sources: <a href="https://www.1871memorial.org/" target="_blank" rel="noopener">1871 Memorial Project</a> · <a href="https://la28.org/en/newsroom/LA28_Announces_Games_Dates.html" target="_blank" rel="noopener">LA28</a> · <a href="https://www.publishersweekly.com/9781982117054" target="_blank" rel="noopener">Publishers Weekly</a> · <a href="https://www.latimes.com/entertainment-arts/story/2026-06-11/lisa-see-daughters-sun-moon-los-angeles-chinese-massacre" target="_blank" rel="noopener">Los Angeles Times</a></p>
+</section>
+
 <section id="artists">
-  <div class="edge"><b>02</b> The artists</div>
+  <div class="edge"><b>04</b> The artists</div>
   <h2>The premiere team</h2>
   <div class="team">
     <article class="person">
@@ -357,7 +468,7 @@ a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
 </section>
 
 <section>
-  <div class="edge"><b>03</b> Technical overview</div>
+  <div class="edge"><b>05</b> Technical overview</div>
   <div class="cols">
     <div>
       <h2>What the stage needs</h2>
@@ -380,7 +491,7 @@ a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
       <img src="assets/booking-stage-extended.png" width="1515" height="682" loading="lazy" alt="">
     </figure>
     <div class="contact-copy">
-      <div class="edge"><b>04</b> Booking</div>
+      <div class="edge"><b>06</b> Booking</div>
       <h2>Bring the work to your season</h2>
       <p>Dates are open for the 2027–28 and 2028–29 seasons. Email your preferred dates, venue, and I'll reach out to discuss more details.</p>
       <div class="addr"><code id="email">daix@daixcompose.com</code><button type="button" id="copy">Copy email</button></div>
